@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
-import WikiApi from './WikiApi.js'
+import WikiApi from './WikiApi.js';
+import WikiSummary from './WikiSummary.js';
+import WikiLink from './WikiLink.js';
 
 export default class GameView extends Component {
   
   constructor(props){
     super(props);
+    
     this.state = {
-      summary: "loading..."
+      links: []
     }
   }
   
-  componentDidMount() {
+  componentDidMount(){
     var self = this;
-    WikiApi.getSummary(this.props.title).then(
-    function(text) {
-      self.setState({
-        summary: text
-      });
+    
+    WikiApi.getLinks(self.props.title).then((data) => {
+      self.setState({ links: data });
     });
+    
+    
   }
 
   render() {
-    var currentTitle = this.props.title;
-
-
-
+    var renderedLinks = this.state.links.map((data) => {
+      return (<WikiLink title={data} key={data}/>);
+    });
+    
+    
     return (
       <div>
-        {this.state.summary}
+        <WikiSummary title={this.props.title}/>
+        {renderedLinks}
       </div>
     );
   }
