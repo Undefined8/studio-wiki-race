@@ -22,16 +22,25 @@ export default class GameView extends Component {
     
     
   }
+  
+  componentDidUpdate(){
+    var self = this;
+    
+    WikiApi.getLinks(self.props.title).then((data) => {
+      self.setState({ links: data });
+    });
+  }
+    
 
   render() {
     var renderedLinks = this.state.links.map((data) => {
-      return (<WikiLink title={data} key={data}/>);
+      return (<WikiLink title={data} addTitle={this.props.addTitle} setCurrentTitle={this.props.setCurrentTitle} key={data}/>);
     });
     
     
     return (
       <div>
-        <WikiSummary title={this.props.title}/>
+        <WikiSummary title={this.props.title} />
         {renderedLinks}
       </div>
     );

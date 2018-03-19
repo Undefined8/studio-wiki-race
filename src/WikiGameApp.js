@@ -15,7 +15,7 @@ export default class WikiGameApp extends Component {
 
     return (
       <div>
-        <GameView title={currentTitle} />
+        <GameView title={currentTitle} setCurrentTitle={setCurrentTitle} addTitle={addTitle}/>
       </div>
     );
   }
