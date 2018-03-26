@@ -16,7 +16,19 @@ export default class WikiSummary extends Component {
         self.setState({
           summary: text
         });
-      });
+      }
+    );
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    var self = this;
+    WikiApi.getSummary(nextProps.title).then(
+      function(text) {
+        self.setState({
+          summary: text
+        });
+      }
+    );
   }
 
   render() {

@@ -36,14 +36,14 @@ class WikiGameHistory extends Component {
   render() {
     var currentTitle = this.props.match.params.title;
     return (
-      <WikiGameApp
-          titles={this.props.location.state.titles}
-          targetTitle={TITLE_END}
-          currentTitle={currentTitle}
-          isComplete={currentTitle === TITLE_END}
-          addTitle={title => this.addTitle(title)}
-          setCurrentTitle={title => this.setCurrentTitle(title)}
-          />
+        <WikiGameApp
+            titles={this.props.location.state.titles}
+            targetTitle={TITLE_END}
+            currentTitle={currentTitle}
+            isComplete={currentTitle === TITLE_END}
+            addTitle={title => this.addTitle(title)}
+            setCurrentTitle={title => this.setCurrentTitle(title)}
+            />
     );
   }
 }

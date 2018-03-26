@@ -3,7 +3,7 @@ import WikiApi from './WikiApi.js';
 
 export default class WikiLink extends Component {
 
-  clickHandler(title){
+  clickHandler(title) {
     this.props.addTitle(title);
   }
 
